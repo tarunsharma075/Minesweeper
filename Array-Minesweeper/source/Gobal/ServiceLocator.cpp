@@ -1,12 +1,13 @@
 #include "../../header/Global/ServiceLocator.h"
-
-
+#include"../../header/Main/GameService.h"
 namespace Global
 {
 	using namespace Graphics;
 	using namespace Event;
 	using namespace Sound;
 	using namespace UI;
+	using namespace Gameplay::Board;
+	using namespace Main;
 
 	ServiceLocator::ServiceLocator()
 	{
@@ -14,6 +15,8 @@ namespace Global
 		event_service = nullptr;
 		sound_service = nullptr;
 		ui_service = nullptr;
+		gamePlayService = nullptr;
+		board_service = nullptr;
 
 		createServices();
 	}
@@ -26,6 +29,8 @@ namespace Global
 		graphic_service = new GraphicService();
 		sound_service = new SoundService();
 		ui_service = new UIService();
+		gamePlayService = new GameplayService();
+		board_service = new BoardService();
 	}
 
 	void ServiceLocator::initialize()
@@ -34,6 +39,8 @@ namespace Global
 		sound_service->initialize();
 		event_service->initialize();
 		ui_service->initialize();
+		gamePlayService->Intialize();
+		board_service->Intialize();
 	}
 
 	void ServiceLocator::update()
@@ -41,12 +48,19 @@ namespace Global
 		event_service->update();
 		ui_service->update();
 		graphic_service->update();
+		gamePlayService->Render();
+		board_service->Update();
 	}
 
 	void ServiceLocator::render()
 	{
 		ui_service->render();
 		graphic_service->render();
+		if (GameService::getGameState() == GameState::GAMEPLAY) {
+			gamePlayService->Render();
+			board_service->Render();
+		}
+		
 	}
 
 	void ServiceLocator::clearAllServices()
@@ -54,6 +68,7 @@ namespace Global
 		delete(ui_service);
 		delete(graphic_service);
 		delete(sound_service);
+		delete(gamePlayService);
 		delete(event_service);
 	}
 
@@ -70,6 +85,16 @@ namespace Global
 	SoundService* ServiceLocator::getSoundService() { return sound_service; }
 
 	UIService* ServiceLocator::getUIService() { return ui_service; }
+
+	Gameplay::Board::BoardService* ServiceLocator::getBoardService()
+	{
+		return board_service;
+	}
+
+	Gameplay::GameplayService* ServiceLocator::getGameplayService()
+	{
+		return gamePlayService;
+	}
 
 	void ServiceLocator::deleteServiceLocator() { delete(this); }
 }
