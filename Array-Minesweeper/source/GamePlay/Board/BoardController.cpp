@@ -3,7 +3,7 @@ namespace Gameplay
 {
 	namespace Board
 	{
-		using namespace Cell;
+		
 		void  BoardController::CreateBoards()
 		{
 		}

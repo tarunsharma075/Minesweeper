@@ -1,5 +1,5 @@
 #pragma once
-#include"../../header/GamePlay/Board/CellController.h"
+#include"../../header/GamePlay/Cell/CellController.h"
 #include"../../header/GamePlay/Board/BoardView.h"
 #include"SFML/Graphics.hpp"
 #include"../../header/GamePlay/Board/BoardView.h"

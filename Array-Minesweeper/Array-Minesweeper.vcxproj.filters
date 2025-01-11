@@ -140,7 +140,7 @@
     <ClInclude Include="header\GamePlay\Board\BoardService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\GamePlay\Board\CellController.h">
+    <ClInclude Include="header\GamePlay\Cell\CellController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\GamePlay\Board\BoardView.h">
@@ -150,6 +150,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\GamePlay\GameplayController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\GamePlay\Cell\CellView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\GamePlay\Cell\CellModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GamePlay\Cell\CellController.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GamePlay\Cell\CellModel.cpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GamePlay\Cell\CellView.cpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
