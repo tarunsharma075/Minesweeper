@@ -1,4 +1,5 @@
 #include"../../header/GamePlay/GameplayController.h"
+using namespace Global;
 namespace Gameplay{
 	GameplayController::GameplayController()
 	{
@@ -14,8 +15,10 @@ namespace Gameplay{
 	}
 	void GameplayController::reset()
 	{
+		ServiceLocator::getInstance()->getBoardService()->ResetBoard();
 	}
 	GameplayController::~GameplayController()
 	{
+		ServiceLocator::getInstance()->getBoardService()->ResetBoard();
 	}
 }

@@ -1,5 +1,5 @@
 #include"../../header/GamePlay/GameplayService.h"
-
+#include"../../header/GamePlay/GameplayController.h"
 namespace Gameplay
 {
 	GameplayService::GameplayService()

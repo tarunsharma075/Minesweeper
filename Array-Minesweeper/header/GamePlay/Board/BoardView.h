@@ -20,8 +20,12 @@ namespace Gameplay
 			// board characterstics
 
 			ImageView* boardImage;
-			const float board_width = 866.f;
-			const float board_height = 1080.f;
+			const float boardWidth = 866.f;
+			const float boardHeight = 1080.f;
+
+			const float boardWidthOffset = 115.f;
+			const float boardHeightoffset = 329.f;
+
 
 
 			void CreateBackGroundImages();
@@ -33,6 +37,8 @@ namespace Gameplay
 			void initialize();
 			void update();
 			void render();
+			float GetCellWidth();
+			float GetCellHeight();
 		};
 	}
 }

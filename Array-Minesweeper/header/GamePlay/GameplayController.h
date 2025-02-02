@@ -1,4 +1,5 @@
 #pragma once
+#include"../../header/Global/ServiceLocator.h"
 namespace Gameplay {
 
 	class GameplayController {

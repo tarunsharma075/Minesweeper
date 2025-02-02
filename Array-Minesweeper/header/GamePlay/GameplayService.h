@@ -1,7 +1,7 @@
 #pragma once
-#include"../../header/GamePlay/GameplayController.h"
 namespace Gameplay
 {
+	class GameplayController;
 	class GameplayService{
 	private:
 		GameplayController* gameplayController;
