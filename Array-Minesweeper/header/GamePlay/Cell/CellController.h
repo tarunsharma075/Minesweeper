@@ -1,7 +1,11 @@
 #pragma once
 #include"SFML/Graphics.hpp"
+#include"../../header/Global/ServiceLocator.h"
+#include"../../header/Sound/SoundService.h"
 namespace Gameplay
 {
+	using namespace Global;
+	using namespace Sound;
 	namespace Cell
 	{
 		class CellView;
@@ -24,6 +28,7 @@ namespace Gameplay
 			CellValue GetCellValue();
 			CellState GetCellState();
 			sf::Vector2i GetCellPosition();
+			void OpenCell();
 			
 		};
 	}

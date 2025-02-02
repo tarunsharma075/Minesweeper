@@ -4,9 +4,12 @@
 
 namespace Gameplay
 {
+
 	namespace Cell
 	{
+	
 		using namespace sf;
+		
 		void CellController::destroy()
 		{
 			delete(cellView);
@@ -49,6 +52,14 @@ namespace Gameplay
 		sf::Vector2i CellController::GetCellPosition()
 		{
 			return cellModel->GetPosition();
+		}
+
+		void CellController::OpenCell()
+		{
+			if (cellModel->GetCellState() != CellState::HIDDEN) {
+				cellModel->SetCellState(CellState::OPEN);
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			}
 		}
 		
 	}
