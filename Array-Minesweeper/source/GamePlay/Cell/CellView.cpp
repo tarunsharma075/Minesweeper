@@ -28,20 +28,23 @@ namespace Gameplay
 		void CellView::initializeButtonImage(float width, float height)
 
 		{
-			RegisterCellButton();
+			
 			sf::Vector2f cell_screen_position = GetCellScreenPosition(width,height);
 			cellButton->initialize("Cell", Config::cells_texture_path, width * sliceCount, height,cell_screen_position);
+			RegisterCellButton();
 		}
 		
 		void CellView::Update()
 		{
 			
 			cellButton->update();
+			SetTexture();
 		}
 		void CellView::Render()
 		{
-			SetTexture();
+			
 			cellButton->render();
+			SetTexture();
 		}
 		void CellView::SetTexture()
 		{
@@ -53,6 +56,7 @@ namespace Gameplay
 				break;
 			case::Gameplay::Cell::CellState::OPEN:
 				cellButton->setTextureRect(sf::IntRect(index * tile_size, 0, tile_size, tile_size));
+				
 				break;
 				case::Gameplay::Cell::CellState::FLAGGED:
 					cellButton->setTextureRect(sf::IntRect(11 * tile_size, 0, tile_size, tile_size));

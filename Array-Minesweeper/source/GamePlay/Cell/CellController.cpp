@@ -3,6 +3,7 @@
 #include"../../header/GamePlay/Cell/CellModel.h"
 #include"../../header/Global/ServiceLocator.h"
 #include"../../header/Sound/SoundService.h"
+#include<iostream>
 namespace Gameplay
 {
 	namespace Cell
@@ -56,14 +57,19 @@ namespace Gameplay
 
 		void CellController::OpenCell()
 		{
-			if (cellModel->GetCellState() != CellState::HIDDEN) {
+			std::cout << "Open cell is called" << std::endl;
+			if (cellModel->GetCellState() !=CellState::FLAGGED) {
+
 				cellModel->SetCellState(CellState::OPEN);
+				
+				std::cout << "Opening Cell! Value: " << static_cast<int>(cellModel->GetCellValue()) <<std::endl;
 				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 			}
 		}
 
 		void CellController::FlagCell()
 		{
+			
 			switch (cellModel->GetCellState()) {
 			case::Gameplay::Cell::CellState::FLAGGED:
 				cellModel->SetCellState(CellState::HIDDEN);

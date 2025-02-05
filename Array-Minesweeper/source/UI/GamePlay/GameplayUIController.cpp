@@ -39,6 +39,7 @@ namespace UI {
 				Config::restart_button_texture_path,
 				button_width, button_height,
 				sf::Vector2f(restart_button_left_offset, restart_button_top_offset));
+			registerButtonCallback();
 		}
 		void GameplayUIController::updateTimeText()
 		{
