@@ -33,6 +33,11 @@ namespace Gameplay
 			boardController->Reset();
 		}
 
+		int BoardService::GetMines()
+		{
+			return boardController->GetMineCount();
+		}
+
 		void BoardService::destroy()
 		{
 			delete(boardController);

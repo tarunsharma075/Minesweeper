@@ -14,6 +14,7 @@ namespace Gameplay {
 		void reset();
 		void UpdateRemainingTime();
 		float GetRemainingTime();
+		int GetMinesCount();
 		~GameplayController();
 };
 }

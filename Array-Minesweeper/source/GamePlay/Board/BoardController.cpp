@@ -87,6 +87,10 @@ namespace Gameplay
 			}
 
 		}
+		int BoardController::GetMineCount()
+		{
+			return NumberOFMines;
+		}
 		BoardController::~BoardController()
 		{
 			Destroy();

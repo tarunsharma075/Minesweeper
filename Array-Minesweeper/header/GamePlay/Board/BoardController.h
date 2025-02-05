@@ -30,6 +30,7 @@ namespace Gameplay
 			void Reset();
 			void intializeCell();
 			void ResetBoard();
+			int GetMineCount();
 			~BoardController();
 		};
 

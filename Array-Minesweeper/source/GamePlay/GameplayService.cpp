@@ -26,4 +26,8 @@ namespace Gameplay
 	{
 		return gameplayController->GetRemainingTime();
 	}
+	int GameplayService::GetMinesCount()
+	{
+		return gameplayController->GetMinesCount();
+	}
 }

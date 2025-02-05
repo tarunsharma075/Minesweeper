@@ -12,6 +12,7 @@ namespace Gameplay
 		void Render();
 		void StartGame();
 		float RemainingTime();
+		int GetMinesCount();
 	};
 
 

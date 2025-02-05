@@ -35,10 +35,10 @@ namespace UI {
 				void initializeTexts();
 				
 				void initializeTimeText();
-
+				void intializeMineText();
 				
 				void updateTimeText();
-				
+				void updateMineText();
 				
 
 				void destroy();
