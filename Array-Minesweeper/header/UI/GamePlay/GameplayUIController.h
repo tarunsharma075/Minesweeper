@@ -31,16 +31,19 @@ namespace UI {
 
 				
 				void createTexts();
+				void createButton();
 				
 				void initializeTexts();
+				void intializeButton();
 				
 				void initializeTimeText();
 				void intializeMineText();
+				void intializeRestartButton();
 				
 				void updateTimeText();
 				void updateMineText();
-				
-
+				void registerButtonCallback();
+				void restartButtonCallback();
 				void destroy();
 
 			public:
