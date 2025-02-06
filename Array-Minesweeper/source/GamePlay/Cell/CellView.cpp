@@ -2,6 +2,7 @@
 #include"../../header/Global/Config.h"
 #include"../../header/GamePlay/Cell/CellController.h"
 #include"../../header/GamePlay/Cell/CellModel.h"
+#include"../../header/Global/\ServiceLocator.h"
 #include<iostream>
 using namespace Global;
 using namespace UI::UIElement;
@@ -76,14 +77,8 @@ namespace Gameplay
 		}
 		void CellView::CellButtonCallBack(buttonType button)
 		{
-			switch (button) {
-			case::UI::UIElement::buttonType::LeftMouseButton:
-				cellController->OpenCell();
-				break;
-			case::UI::UIElement::buttonType::RightMouseButton:
-				cellController->FlagCell();
-				break;
-			}
+			
+			ServiceLocator::getInstance()->getBoardService()->processInput(cellController, button);
 		}
 		CellView::~CellView()
 		{

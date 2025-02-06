@@ -1,5 +1,7 @@
 #include"../../header/GamePlay/Board/BoardController.h"
-
+#include"../../header/GamePlay/Cell/CellModel.h"
+#include"../../header/Global/ServiceLocator.h"
+#include"../../header/Sound/SoundService.h"
 namespace Gameplay
 {
 	
@@ -7,6 +9,9 @@ namespace Gameplay
 	{
 		using namespace sf;
 		using namespace Gameplay::Cell;
+		using namespace UI::UIElement;
+		using namespace Global;
+		using namespace Sound;
 		void BoardController::CreateBoards()
 		{
 			for (int i = 0; i <NumberOfRows; i++) {
@@ -65,6 +70,7 @@ namespace Gameplay
 		void BoardController::Reset()
 		{
 			ResetBoard();
+			flagged_cell = 0;
 		}
 		void BoardController::intializeCell()
 		{
@@ -88,6 +94,50 @@ namespace Gameplay
 
 		}
 		int BoardController::GetMineCount()
+		{
+			return NumberOFMines-flagged_cell;
+		}
+		void BoardController::OpenCell(sf::Vector2i cell_position)
+		{
+			if (board[cell_position.x][cell_position.y]->CanOpenCell())
+			{
+				board[cell_position.x][cell_position.y]->OpenCell();
+			}
+		}
+		void BoardController::ProcessCellInput(CellController* cellController, UI::UIElement::buttonType button)
+		{
+			switch (button) {
+			case::buttonType::LeftMouseButton:
+				OpenCell(cellController->GetCellPosition());
+				break;
+			case::buttonType::RightMouseButton:
+				
+				flagCell(cellController->GetCellPosition());
+				break;
+			}
+		}
+		void BoardController::flagCell(sf::Vector2i cell_position)
+		{
+			switch (board[cell_position.x][cell_position.y]->GetCellState()) {
+			case::Gameplay::Cell::CellState::FLAGGED:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::Flag);
+
+				flagged_cell--;
+				if (flagged_cell <= 0) {
+					flagged_cell = 0;
+				}
+				break;
+			case CellState::HIDDEN:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::Flag);
+				flagged_cell++;
+				if (flagged_cell >= GetMaxMineCount()) {
+					flagged_cell = GetMaxMineCount();
+				}
+				break;
+			}
+			board[cell_position.x][cell_position.y]->FlagCell();
+		}
+		int BoardController::GetMaxMineCount()
 		{
 			return NumberOFMines;
 		}

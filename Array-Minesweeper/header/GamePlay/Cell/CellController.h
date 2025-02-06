@@ -25,7 +25,9 @@ namespace Gameplay
 			CellState GetCellState();
 			sf::Vector2i GetCellPosition();
 			void OpenCell();
+			bool CanOpenCell();
 			void FlagCell();
+			CellState setcellstate(CellState state);
 		};
 	}
 }

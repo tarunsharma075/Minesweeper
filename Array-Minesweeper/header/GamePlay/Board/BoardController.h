@@ -3,6 +3,7 @@
 #include"../../header/GamePlay/Board/BoardView.h"
 #include"SFML/Graphics.hpp"
 #include"../../header/GamePlay/Board/BoardView.h"
+#include"../../header/UI/UIElement/ButtonView.h"
 namespace Gameplay
 {
 	namespace Board
@@ -31,6 +32,11 @@ namespace Gameplay
 			void intializeCell();
 			void ResetBoard();
 			int GetMineCount();
+			void OpenCell(sf::Vector2i cell_position);
+			int flagged_cell;
+			void ProcessCellInput(Cell::CellController * cellController, UI::UIElement::buttonType button);
+			void flagCell(sf::Vector2i cell_position);
+			int GetMaxMineCount();
 			~BoardController();
 		};
 

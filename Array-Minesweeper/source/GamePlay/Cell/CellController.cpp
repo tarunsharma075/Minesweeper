@@ -18,8 +18,10 @@ namespace Gameplay
 		}
 		CellController::CellController(Vector2i position)
 		{
+
 			cellView = new CellView(this);
 			cellModel = new CellModel(position);
+			
 		}
 		CellController::~CellController()
 		{
@@ -57,14 +59,12 @@ namespace Gameplay
 
 		void CellController::OpenCell()
 		{
-			std::cout << "Open cell is called" << std::endl;
-			if (cellModel->GetCellState() !=CellState::FLAGGED) {
+			setcellstate(Gameplay::Cell::CellState::OPEN);
+		}
 
-				cellModel->SetCellState(CellState::OPEN);
-				
-				std::cout << "Opening Cell! Value: " << static_cast<int>(cellModel->GetCellValue()) <<std::endl;
-				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-			}
+		bool CellController::CanOpenCell()
+		{
+			return cellModel->GetCellState() != CellState::FLAGGED && cellModel->GetCellState() != CellState::OPEN;
 		}
 
 		void CellController::FlagCell()
@@ -80,6 +80,13 @@ namespace Gameplay
 			}
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::Flag);
 		}
+
+		CellState CellController::setcellstate(CellState state)
+		{
+			return cellModel->GetCellState();
+		}
+
+		
 		
 	}
 }

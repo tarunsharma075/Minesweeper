@@ -61,8 +61,9 @@ namespace Global
 		
 		graphic_service->render();
 		if (GameService::getGameState() == GameState::GAMEPLAY) {
-			gamePlayService->Render();
+			
 			board_service->Render();
+			gamePlayService->Render();
 		}
 		ui_service->render();
 	}

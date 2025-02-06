@@ -38,6 +38,11 @@ namespace Gameplay
 			return boardController->GetMineCount();
 		}
 
+		void BoardService::processInput(Cell::CellController* cellController, UI::UIElement::buttonType button)
+		{
+			boardController->ProcessCellInput(cellController, button);
+		}
+
 		void BoardService::destroy()
 		{
 			delete(boardController);
