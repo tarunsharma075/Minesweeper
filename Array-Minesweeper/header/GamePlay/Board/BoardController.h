@@ -54,6 +54,7 @@ namespace Gameplay
 			int countMinesAround(sf::Vector2i cellposition);
 			bool isValidCellPosition(sf::Vector2i cellposition);
 			void PopulateCells();
+			void OpenAllCells();
 			~BoardController();
 		};
 
