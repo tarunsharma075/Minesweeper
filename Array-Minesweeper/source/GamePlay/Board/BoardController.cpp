@@ -105,8 +105,10 @@ namespace Gameplay
 			{
 				if (boardState == BoardState::FIRST_CELL) {
 					PopulateBoard(cell_position);
+					
 					boardState = BoardState::PLAYING;
 				}
+				ProcessValue(cell_position);
 				board[cell_position.x][cell_position.y]->OpenCell();
 			}
 		}
@@ -200,6 +202,42 @@ namespace Gameplay
 						board[a][b]->SetCellvalue(value);
 					}
 				}
+			}
+		}
+		void BoardController::OpenAllCells()
+		{
+			if (boardState == BoardState::FIRST_CELL)
+			{
+				PopulateBoard(sf::Vector2i(0, 0));
+			}
+
+			for (int a = 0; a < NumberOfRows; ++a)
+			{
+				for (int b = 0; b < NumberOFColums; ++b)
+				{
+					board[a][b]->OpenCell();
+				}
+			}
+		}
+		void BoardController::ProcessValue(sf::Vector2i CellPosition)
+		{
+			switch (board[CellPosition.x][CellPosition.y]->GetCellValue()) {
+			case::Cell::CellValue::EMPTY:
+				break;
+			case::Cell::CellValue::MINE:
+				break;
+			default:
+				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+				break;
+					
+			}
+		}
+		void BoardController::OpenEmptyCells(sf::Vector2i CellPosition)
+		{
+			switch (board[CellPosition.x][CellPosition.y]->GetCellState()) {
+			case Cell::CellState::OPEN:
+				return;
+				case cell::
 			}
 		}
 		BoardController::~BoardController()
