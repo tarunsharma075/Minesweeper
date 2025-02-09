@@ -108,7 +108,7 @@ namespace Gameplay
 					
 					boardState = BoardState::PLAYING;
 				}
-				ProcessValue(cell_position);
+				ProcessCellValue(cell_position);
 				board[cell_position.x][cell_position.y]->OpenCell();
 			}
 		}
@@ -219,10 +219,11 @@ namespace Gameplay
 				}
 			}
 		}
-		void BoardController::ProcessValue(sf::Vector2i CellPosition)
+		void BoardController::ProcessCellValue(sf::Vector2i CellPosition)
 		{
 			switch (board[CellPosition.x][CellPosition.y]->GetCellValue()) {
 			case::Cell::CellValue::EMPTY:
+				ProcessemptyCell(CellPosition);
 				break;
 			case::Cell::CellValue::MINE:
 				break;
@@ -237,8 +238,32 @@ namespace Gameplay
 			switch (board[CellPosition.x][CellPosition.y]->GetCellState()) {
 			case Cell::CellState::OPEN:
 				return;
-				case cell::
+			case Cell::CellState::FLAGGED:
+				flagged_cell--;
+
+			default:
+				board[CellPosition.x][CellPosition.y]->OpenCell();
+
 			}
+
+			for (int a = -1; a < 2; a++)
+			{
+				for (int b = -1; b < 2; b++)
+				{
+					// Skip the iteration if it's the current cell or if the new cell position is not valid.
+					if ((a == 0 && b == 0) || !isValidCellPosition(sf::Vector2i(a + CellPosition.x, b + CellPosition.y)))
+						continue;
+
+					// Calculate the position of the neighbouring cell.
+					sf::Vector2i next_cell_position = sf::Vector2i(a + CellPosition.x, b + CellPosition.y);
+					OpenCell(next_cell_position);
+				}
+			}
+		}
+		void BoardController::ProcessemptyCell(sf::Vector2i cellPosition)
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
+			OpenEmptyCells(cellPosition);
 		}
 		BoardController::~BoardController()
 		{
