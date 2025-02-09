@@ -27,7 +27,8 @@ namespace Gameplay
 			void OpenCell();
 			bool CanOpenCell();
 			void FlagCell();
-			CellState setcellstate(CellState state);
+		    void  setcellstate(CellState state);
+			void SetCellvalue(CellValue value);
 		};
 	}
 }

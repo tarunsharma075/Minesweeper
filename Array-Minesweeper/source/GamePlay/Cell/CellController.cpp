@@ -81,9 +81,14 @@ namespace Gameplay
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::Flag);
 		}
 
-		CellState CellController::setcellstate(CellState state)
+		void CellController::setcellstate(CellState state)
 		{
-			return cellModel->GetCellState();
+			return cellModel->SetCellState(state);
+		}
+
+		void CellController::SetCellvalue(CellValue value)
+		{
+			return cellModel->SetCellValue(value);
 		}
 
 		
