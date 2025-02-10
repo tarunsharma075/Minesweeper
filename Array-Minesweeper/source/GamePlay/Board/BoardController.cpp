@@ -115,6 +115,8 @@ namespace Gameplay
 		}
 		void BoardController::ProcessCellInput(CellController* cellController, UI::UIElement::buttonType button)
 		{
+			if (boardState == BoardState::COMPLETED)
+				return;
 			switch (button) {
 			case::buttonType::LeftMouseButton:
 				OpenCell(cellController->GetCellPosition());
@@ -284,6 +286,17 @@ namespace Gameplay
 				break;
 			}
 		}
+		void BoardController::flagallmines() {
+			for (int row = 0; row < NumberOfRows; ++row)
+			{
+				for (int col = 0; col < NumberOFColums; ++col)
+				{
+					if (board[row][col]->GetCellValue() == CellValue::MINE && board[row][col]->GetCellState() != CellState::FLAGGED)
+						flagCell(sf::Vector2i(row, col));
+				}
+			}
+		}
+		
 		BoardController::~BoardController()
 		{
 			Destroy();
