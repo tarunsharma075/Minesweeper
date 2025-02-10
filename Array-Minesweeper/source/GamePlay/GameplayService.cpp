@@ -1,5 +1,5 @@
 #include"../../header/GamePlay/GameplayService.h"
-#include"../../header/GamePlay/GameplayController.h"
+
 namespace Gameplay
 {
 	GameplayService::GameplayService()
@@ -30,4 +30,10 @@ namespace Gameplay
 	{
 		return gameplayController->GetMinesCount();
 	}
+	void GameplayService::endgame(GameResult result)
+	{
+		gameplayController->EndGame(result);
+	}
+	
+
 }

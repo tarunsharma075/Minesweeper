@@ -3,6 +3,7 @@
 #include"../../header/Global/ServiceLocator.h"
 #include"../../header/Sound/SoundService.h"
 #include"../../header/GamePlay/Cell/CellModel.h"
+#include"../../header/GamePlay/GameplayController.h"
 namespace Gameplay
 {
 	
@@ -206,10 +207,6 @@ namespace Gameplay
 		}
 		void BoardController::OpenAllCells()
 		{
-			if (boardState == BoardState::FIRST_CELL)
-			{
-				PopulateBoard(sf::Vector2i(0, 0));
-			}
 
 			for (int a = 0; a < NumberOfRows; ++a)
 			{
@@ -226,6 +223,7 @@ namespace Gameplay
 				ProcessemptyCell(CellPosition);
 				break;
 			case::Cell::CellValue::MINE:
+				processMineCells(CellPosition);
 				break;
 			default:
 				ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
@@ -264,6 +262,27 @@ namespace Gameplay
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
 			OpenEmptyCells(cellPosition);
+		}
+		void BoardController::processMineCells(sf::Vector2i cellposition)
+		{
+			ServiceLocator::getInstance()->getGameplayService()->endgame(Gameplay::GameResult::LOST);
+			
+		}
+		void BoardController::ShowBoard()
+		{
+			switch (GetBoardstate()) {
+			case BoardState::FIRST_CELL:
+				PopulateBoard(sf::Vector2i(0, 0));
+				OpenAllCells();
+				break;
+			case BoardState::PLAYING:
+				OpenAllCells();
+				break;
+			case BoardState::COMPLETED:
+				break;
+			default:
+				break;
+			}
 		}
 		BoardController::~BoardController()
 		{
