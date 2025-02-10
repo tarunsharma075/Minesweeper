@@ -14,6 +14,9 @@ namespace Gameplay{
 	void GameplayController::update()
 	{
 		UpdateRemainingTime();
+		if (istimeover()) {
+			EndGame(GameResult::LOST);
+		}
 	}
 	void GameplayController::render()
 	{
@@ -71,6 +74,10 @@ namespace Gameplay{
 	void GameplayController::ShowCredits()
 	{
 		GameService::setGameState(GameState::CREDITS);
+	}
+	bool GameplayController::istimeover()
+	{
+		return (remainingTime<=1);
 	}
 	GameplayController::~GameplayController()
 	{

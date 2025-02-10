@@ -31,6 +31,7 @@ namespace Gameplay {
 		void GameLost();
 		void BeginGameOvertime();
 		void ShowCredits();
+		bool istimeover();
 		~GameplayController();
 };
 }
