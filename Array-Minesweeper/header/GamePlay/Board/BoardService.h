@@ -22,7 +22,6 @@ namespace Gameplay
 			void processInput(Cell::CellController* cellController, UI::UIElement::buttonType button);
 			void ShowBoard();
 			void setBoardState(BoardState state);
-			void flagallmines();
 		
 		};
 		

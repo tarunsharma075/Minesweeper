@@ -51,10 +51,6 @@ namespace Gameplay{
 	}
 	void GameplayController::GameWon()
 	{
-		gameresult = GameResult::WON;
-		ServiceLocator::getInstance()->getBoardService()->flagallmines();
-		
-		
 	}
 	void GameplayController::GameLost()
 	{

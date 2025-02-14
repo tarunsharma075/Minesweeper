@@ -60,7 +60,6 @@ namespace Gameplay
 			void ProcessemptyCell(sf::Vector2i cellPosition);
 			void processMineCells(sf::Vector2i cellposition);
 			void ShowBoard();
-			void flagallmines();
 			~BoardController();
 		};
 

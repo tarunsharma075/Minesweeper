@@ -53,11 +53,6 @@ namespace Gameplay
 			boardController->SetBoardstate(state);
 		}
 
-		void BoardService::flagallmines()
-		{
-			boardController->flagallmines();
-		}
-
 		void BoardService::destroy()
 		{
 			delete(boardController);
