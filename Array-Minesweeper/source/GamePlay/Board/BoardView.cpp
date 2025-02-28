@@ -20,8 +20,8 @@ namespace Gameplay
 		void BoardView::CreateBoardImage()
 		{
 			boardImage->initialize(Global::Config::board_texture_path,
-				board_width,
-				board_height,
+				boardWidth,
+				boardHeight,
 				sf::Vector2f(0, 0));
 			boardImage->setCentreAlinged();
 		}
@@ -56,6 +56,16 @@ namespace Gameplay
 		{
 			backgroundImage->render();
 			boardImage->render();
+		}
+
+		float BoardView::GetCellWidth()
+		{
+			return (boardWidth - boardWidthOffset) / static_cast<float>(BoardController::NumberOFColums);
+		}
+
+		float BoardView::GetCellHeight()
+		{
+			return (boardHeight - boardHeightoffset) / static_cast<float>(BoardController::NumberOfRows);
 		}
 		
 	
