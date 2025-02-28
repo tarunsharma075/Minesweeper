@@ -1,5 +1,6 @@
 #pragma once
 #include"../../header/GamePlay/Board/BoardController.h"
+
 namespace Gameplay
 {
 	namespace Board
@@ -18,10 +19,6 @@ namespace Gameplay
 			void Update();
 			void Render();
 			void ResetBoard();
-			int GetMines();
-			void processInput(Cell::CellController* cellController, UI::UIElement::buttonType button);
-			void ShowBoard();
-			void setBoardState(BoardState state);
 		
 		};
 		

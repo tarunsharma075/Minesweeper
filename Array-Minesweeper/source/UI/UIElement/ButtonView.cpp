@@ -44,30 +44,17 @@ namespace UI
         {
             sf::Vector2f mouse_position = sf::Vector2f(sf::Mouse::getPosition(*game_window));
 
-            if (clickedLeftMouseButton(&image_sprite, mouse_position))
+            if (clickedButton(&image_sprite, mouse_position))
             {
-                if (callback_function) callback_function(buttonType::LeftMouseButton);
-            }
-
-            if (clickedRightMouseButton(&image_sprite, mouse_position))
-            {
-                if (callback_function) callback_function(buttonType::RightMouseButton);
+                if (callback_function) callback_function();
             }
         }
 
-        bool ButtonView::clickedLeftMouseButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
+        bool ButtonView::clickedButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
         {
             return ServiceLocator::getInstance()->getEventService()->pressedLeftMouseButton() &&
                 button_sprite->getGlobalBounds().contains(mouse_position);
         }
-
-        bool ButtonView::clickedRightMouseButton(sf::Sprite* button_sprite, sf::Vector2f mouse_position)
-        {
-            return ServiceLocator::getInstance()->getEventService()->pressedRightMouseButton() &&
-                button_sprite->getGlobalBounds().contains(mouse_position);
-        }
-
-      
 
         void ButtonView::printButtonClicked()
         {
