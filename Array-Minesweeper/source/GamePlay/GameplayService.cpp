@@ -22,18 +22,4 @@ namespace Gameplay
 	{
 		gameplayController->reset();
 	}
-	float  GameplayService::RemainingTime()
-	{
-		return gameplayController->GetRemainingTime();
-	}
-	int GameplayService::GetMinesCount()
-	{
-		return gameplayController->GetMinesCount();
-	}
-	void GameplayService::endgame(GameResult result)
-	{
-		gameplayController->EndGame(result);
-	}
-	
-
 }

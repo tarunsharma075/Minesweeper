@@ -6,7 +6,6 @@ namespace Sound
 	enum class SoundType
 	{
 		BUTTON_CLICK,
-		Flag,
 	};
 
 	class SoundService
@@ -17,7 +16,6 @@ namespace Sound
 		sf::Music background_music;
 		sf::Sound sound_effect;
 		sf::SoundBuffer buffer_button_click;
-		sf::SoundBuffer buffer_flag_click;
 
 		void loadBackgroundMusicFromFile();
 		void loadSoundFromFile();
